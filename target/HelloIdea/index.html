@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloSSM</title>
+</head>
+<body>
+<p id="HelloSSM">Hello World!</p>
+<button type="button" onclick="selectUser()">onclick test</button>
+</body>
+<script>
+    function selectUser() {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                document.getElementById("HelloSSM").innerHTML=xmlHttp.responseText;
+            }
+        }
+        xmlHttp.open("POST","User/showUser.do",true);
+        xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded ");
+        xmlHttp.send("id=1");
+    }
+</script>
+</html>
